@@ -1,0 +1,29 @@
+.add-project {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.add-project-title {
+    font-family: Helvetica;
+    font-size: 2rem;
+    font-weight: normal;
+    border-bottom: 1px solid $gray-light;
+    padding-bottom: 20px;
+}
+
+.add-project-title-input {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: none;
+}
+
+.add-project-save {
+    float: right;
+}
