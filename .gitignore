@@ -1,0 +1,12 @@
+# NPM
+node_modules
+
+# Build outputs
+build
+
+# Exposed public directories from modules
+# E.g. modules/foobar/client/public/** => assets/exposed/foobar/
+assets/exposed
+
+# Temporary files
+tmp

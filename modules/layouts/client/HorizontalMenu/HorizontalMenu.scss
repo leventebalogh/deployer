@@ -1,0 +1,18 @@
+.horizontal-menu {
+    background-color: $dark-gray;
+    margin-bottom: 20px;
+}
+
+.horizontal-menu a {
+    color: $white;
+}
+
+.horizontal-menu .pure-menu-link,
+.horizontal-menu .pure-menu-link:focus {
+    background-color: $dark-gray;
+}
+
+.horizontal-menu .pure-menu-link.active,
+.horizontal-menu .pure-menu-link:hover {
+    background-color: $darkest-gray;
+}

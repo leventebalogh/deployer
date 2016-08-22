@@ -1,0 +1,45 @@
+@import "../variables";
+
+.vertical-menu {
+    transform: translate3d(0, 0, 0);
+    margin-left: -$vertical-menu-width;
+    width: $vertical-menu-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: $black;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.vertical-menu a {
+    color: $gray;
+    border: none;
+    padding: 0.6em 0 0.6em 0.6em;
+}
+.vertical-menu .pure-menu,
+.vertical-menu .pure-menu ul {
+    border: none;
+    background: transparent;
+}
+.vertical-menu .pure-menu ul,
+.vertical-menu .pure-menu .menu-item-divided {
+    border-top: 1px solid $darkest-gray;
+}
+.vertical-menu .pure-menu li a:hover,
+.vertical-menu .pure-menu li a:focus {
+    background: $darkest-gray;
+}
+.vertical-menu .pure-menu-selected,
+.vertical-menu .pure-menu-heading {
+    background: $blue;
+}
+.vertical-menu .pure-menu-selected a {
+    color: $white;
+}
+.vertical-menu .pure-menu-heading {
+    font-size: 110%;
+    color: $white;
+    margin: 0;
+}

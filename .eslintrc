@@ -1,0 +1,35 @@
+{
+    "extends": "airbnb",
+    "globals": {
+        "expect": true,
+        "describe": true,
+        "before": true,
+        "beforeEach": true,
+        "after": true,
+        "afterEach": true,
+        "it": true,
+        "should": true,
+        "browser": true
+    },
+    "parser": "babel-eslint",
+    "env": {
+        "mocha": true
+    },
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true,
+        "blockBindings": true,
+        "arrowFunctions": true
+    },
+    "rules": {
+        "indent": 0,
+        "no-param-reassign": 0,
+        "comma-dangle": [2, "never"],
+        "no-use-before-define": [2, "nofunc"],
+        "react/jsx-indent-props": [2, 4],
+        "react/jsx-indent": [2, 4],
+        "strict": [0],
+        "new-cap": [2, {"capIsNewExceptions": ["When", "Then", "Given", "And", "Router"]}],
+        "import/no-unresolved": [2, { ignore: ['\.core$'] }]
+    }
+}

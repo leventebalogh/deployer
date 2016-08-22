@@ -1,0 +1,64 @@
+em {
+    font-style: normal;
+    padding-left: 2px;
+    color: $red;
+    cursor: pointer;
+}
+
+.login-form-error,
+.registration-form-error {
+    background: $red;
+    color: $white;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+.login-form,
+.registration-form {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    margin-top: 50px;
+
+    a {
+        color: $blue;
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .form-element {
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+
+    .form-element input {
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        float: left;
+        outline: none;
+    }
+
+    .form-element input[type="text"],
+    .form-element input[type="password"],
+    .form-element input[type="email"],
+    .form-element textarea {
+        border: 1px solid $gray;
+    }
+
+    .form-element label {
+        width: 100%;
+        float: left;
+        font-weight: bold;
+        font-size: 11pt;
+        margin-bottom: 3px;
+    }
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="charset" content="utf-8" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/public/dist/build.css" />
+    {{#initialState}}
+        <script>
+            window.__INITIAL_STATE__ = {{{initialState}}};
+        </script>
+    {{/initialState}}
+</head>
+<body>
+    <div id="app">{{{renderedContent}}}</div>
+    <script src="/public/dist/build.js"></script>
+</body>
+</html>

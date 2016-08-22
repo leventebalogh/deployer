@@ -1,0 +1,101 @@
+@import "../variables";
+
+.vertical-menu-layout,
+.vertical-menu-layout-content,
+.vertical-menu-opener,
+.vertical-menu {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+// This is the parent `<div>` that contains the menu and the content area.
+.vertical-menu-layout {
+    position: relative;
+    padding-left: 0;
+}
+.vertical-menu-layout.active .vertical-menu {
+    transform: translate3d($vertical-menu-width, 0, 0);
+    width: $vertical-menu-width;
+}
+.vertical-menu-layout.active .vertical-menu-opener {
+    transform: translate3d($vertical-menu-width, 0, 0);
+}
+.vertical-menu-layout-content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+// Menu Opener
+.vertical-menu-opener {
+    transform: translate3d(0, 0, 0);
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 0;
+    left: 0; /* ".vertical-menu width" */
+    background: #000;
+    background: rgba(0,0,0,0.7);
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+    cursor: pointer;
+}
+.vertical-menu-opener:hover,
+.vertical-menu-opener:focus {
+    background: #000;
+}
+.vertical-menu-opener span {
+    position: relative;
+    display: block;
+}
+.vertical-menu-opener span,
+.vertical-menu-opener span:before,
+.vertical-menu-opener span:after {
+    background-color: #fff;
+    width: 100%;
+    height: 0.2em;
+}
+.vertical-menu-opener span:before,
+.vertical-menu-opener span:after {
+    position: absolute;
+    margin-top: -0.6em;
+    content: " ";
+}
+
+.vertical-menu-opener span:after {
+    margin-top: 0.6em;
+}
+
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+// Hides the menu at 48 em
+@media (min-width: 48em) {
+    .vertical-menu-layout-content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    .vertical-menu-layout {
+        padding-left: $vertical-menu-width; /* left col width ".vertical-menu" */
+        left: 0;
+    }
+    .vertical-menu {
+        left: $vertical-menu-width;
+    }
+    .vertical-menu-opener {
+        position: fixed;
+        left: $vertical-menu-width;
+        display: none;
+    }
+    .vertical-menu-layout.active .vertical-menu-opener {
+        left: $vertical-menu-width;
+    }
+}
+
+@media (max-width: 48em) {}

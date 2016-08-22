@@ -1,0 +1,10 @@
+{
+    "config": {
+
+        // Set indent for code inside blocks, including media queries and nested rules.
+        "block-indent": 4,
+
+        // Set space before `{`.
+        "space-before-opening-brace": " "
+    }
+}
