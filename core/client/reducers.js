@@ -58,6 +58,24 @@ const menu = (state = { open: false }, action) => {
     }
 };
 
+const projects = (state = { data: [] }, action) => {
+    switch (action.type) {
+        case 'PROJECTS_SET':
+            return {
+                data: action.data,
+                loaded: true
+            };
+        case 'PROJECTS_ADD':
+            return {
+                data: [].concat(state.data).concat([action.data]),
+                loaded: true
+            };
+        case 'PROJECTS_REMOVE':
+            return state;
+        default:
+            return state;
+    }
+};
 
 const notifications = (state = { data: [] }, action) => {
     switch (action.type) {
@@ -91,6 +109,7 @@ const app = combineReducers({
     loading,
     auth,
     menu,
+    projects,
     notifications
 });
 
