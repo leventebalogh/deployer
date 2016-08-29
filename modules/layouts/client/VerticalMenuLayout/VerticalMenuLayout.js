@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toggleMenu } from '../actions';
 import VerticalMenu from '../VerticalMenu/VerticalMenu';
+import { Notifications } from '../../../notifications';
 
 const VerticalMenuLayout = ({ children, menu, toggleMenu }) => {
     const layoutClass = menu.open ? 'vertical-menu-layout active' : 'vertical-menu-layout';
@@ -11,6 +12,7 @@ const VerticalMenuLayout = ({ children, menu, toggleMenu }) => {
             <span className="vertical-menu-opener" onClick={toggleMenu}><span></span></span>
             <VerticalMenu />
             <div className="vertical-menu-layout-content">{children}</div>
+            <Notifications />
         </div>
     );
 };

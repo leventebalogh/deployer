@@ -30,6 +30,7 @@
         "react/jsx-indent": [2, 4],
         "strict": [0],
         "new-cap": [2, {"capIsNewExceptions": ["When", "Then", "Given", "And", "Router"]}],
-        "import/no-unresolved": [2, { ignore: ['\.core$'] }]
+        "import/no-unresolved": [2, { ignore: ['\.core$'] }],
+        "max-len": [2, 120]
     }
 }

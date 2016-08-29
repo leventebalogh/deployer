@@ -21,14 +21,76 @@ export function renderMenuItems(items) {
 
     return _.map(items, item => (
         <li className="pure-menu-item" key={i++}>
-            <Link
-                to={item.link}
-                title={item.title}
-                className="pure-menu-link"
-                activeClassName="active"
-            >
-                {item.name}
-            </Link>
+            {renderPrepend(item)}
+            {renderMenuItem(item)}
+            {renderAppend(item)}
         </li>
     ));
+}
+
+export function renderMenuItem(item) {
+    if (item.html) {
+        return renderHtml(item);
+    }
+
+    if (item.pureLink) {
+        return (
+            <a
+                href={item.link}
+                title={item.title}
+                className="pure-menu-link"
+            >
+                {getIcon(item.icon)}
+                {item.name}
+            </a>
+        );
+    }
+
+    return (
+        <Link
+            to={item.link}
+            title={item.title}
+            className="pure-menu-link"
+            activeClassName="active"
+        >
+            {getIcon(item.icon)}
+            {item.name}
+        </Link>
+    );
+}
+
+export function getIcon(icon) {
+    if (icon) {
+        return (
+            <span className={`${icon} pure-menu-item-icon`}></span>
+        );
+    }
+
+    return '';
+}
+
+function renderHtml(item) {
+    if (item.html) {
+        return (
+            <div dangerouslySetInnerHTML={{ __html: item.html }} />
+        );
+    }
+
+    return '';
+}
+
+function renderPrepend(item) {
+    if (item.prepend) {
+        return item.prepend;
+    }
+
+    return '';
+}
+
+function renderAppend(item) {
+    if (item.append) {
+        return item.append;
+    }
+
+    return '';
 }

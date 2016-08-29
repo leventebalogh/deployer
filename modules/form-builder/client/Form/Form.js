@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { createElement } from './Element';
 import checkboxElement from './CheckboxElement';
+import textareaElement from './TextareaElement';
 import dateElement from './DateElement';
 
 export default class Form extends React.Component {
@@ -51,6 +52,9 @@ export default class Form extends React.Component {
 
                 case 'date':
                 return dateElement(element);
+
+                case 'textarea':
+                return textareaElement(element);
 
                 default:
                 return createElement(element);

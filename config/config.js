@@ -12,6 +12,7 @@ module.exports = {
             'layouts',
             'ionicons',
             'deployer'
+            'notifications'
         ],
         port: 8080,
         mongodb: {

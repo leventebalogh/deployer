@@ -53,8 +53,7 @@ function getRoutesAndStore(routes, req) {
     return Promise.all(promises)
         .then(data => {
             const state = _.reduce(data, _.merge);
-            const store = createStore(rootReducer, state);
-            return store;
+            return createStore(rootReducer, state);
         })
         .then(store => {
             routes = extendOnEnterHooksOnRoutes(routes, store);
@@ -95,6 +94,7 @@ function getPromisesFromDataLoaders(dataLoaders, req) {
 
     return _.map(dataLoaders, (dataLoader) => promisehub.call(dataLoader.url, {
         stateProperty: dataLoader.stateProperty,
+        loaded: true,
         req
     }));
 }

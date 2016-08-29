@@ -1,18 +1,21 @@
 const registry = require('core/server/registry');
 const utils = require('./server/utils');
 const passport = require('passport');
-const config = registry.get('config');
-const app = registry.get('app');
 const session = require('express-session');
 const basicStrategy = require('./server/strategy.basic');
 const localStrategy = require('./server/strategy.local');
-const promisehub = registry.get('promisehub');
 const Promise = require('bluebird');
+const RedisStore = require('connect-redis')(session);
+const redis = require('redis');
+const config = registry.get('config');
+const app = registry.get('app');
+const promisehub = registry.get('promisehub');
 
 utils.registerUsersModelIfNeeded();
 
 app.use(session({
     secret: config.get('authentication.secret', 'krx6jTmvV2DxRM9K'),
+    store: new RedisStore({ client: redis.createClient(6379, 'localhost') }),
     resave: true,
     saveUninitialized: true
 }));

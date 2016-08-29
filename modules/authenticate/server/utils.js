@@ -30,7 +30,11 @@ function authenticate(type) {
         if (req.isAuthenticated()) {
             next();
         } else {
-            res.redirect(config.get('authentication.login.url', '/login'));
+            res
+            .status(401)
+            .json({
+                error: 'AUTHENTICATION_NEEDED'
+            });
         }
     };
 }

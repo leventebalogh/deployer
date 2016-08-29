@@ -36,8 +36,18 @@ function mixStoreToRoutes(routes) {
                             asyncLoader => asyncLoader(store.dispatch, store.getState)
                         );
 
-                        Promise.all(promises)
-                        .then(() => {
+                        if (promises.length) {
+                            Promise.all(promises)
+                            .then(() => {
+                                originalCallback(
+                                    nextState,
+                                    replace,
+                                    callback,
+                                    store.dispatch,
+                                    store.getState
+                                );
+                            });
+                        } else {
                             originalCallback(
                                 nextState,
                                 replace,
@@ -45,7 +55,7 @@ function mixStoreToRoutes(routes) {
                                 store.dispatch,
                                 store.getState
                             );
-                        });
+                        }
                     };
 
                 // No `onEnter` was defined
@@ -100,7 +110,7 @@ function getAsyncLoaders(getState, dataLoaders) {
                 return false;
             }
 
-            if (dataLoader.stateProperty && state[dataLoader.stateProperty].loaded !== false) {
+            if (dataLoader.stateProperty && state[dataLoader.stateProperty].loaded === true) {
                 return false;
             }
 

@@ -3,10 +3,15 @@ import _ from 'lodash';
 
 export function createElement(element) {
     element = normalizeElementProperties(element);
-    let required = '';
+    let required = '',
+        description = '';
 
     if (element.required) {
         required = <em title="This field is required">*</em>;
+    }
+
+    if (element.description) {
+        description = <span className="form-element-description">{element.description}</span>;
     }
 
     return (
@@ -14,6 +19,7 @@ export function createElement(element) {
             <label htmlFor={element.name}>
                 {element.label}
                 {required}
+                {description}
             </label>
             <input
                 className={element.classes}

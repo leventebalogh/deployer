@@ -58,12 +58,40 @@ const menu = (state = { open: false }, action) => {
     }
 };
 
+
+const notifications = (state = { data: [] }, action) => {
+    switch (action.type) {
+        case 'NOTIFICATIONS_SET':
+            return {
+                data: action.data,
+                loaded: true
+            };
+        case 'NOTIFICATIONS_ADD':
+            return {
+                data: [].concat(state.data).concat([action.data]),
+                loaded: true
+            };
+        case 'NOTIFICATIONS_DISMISS':
+            // get by ID and remove
+            return state;
+        case 'NOTIFICATIONS_DISMISS_ALL':
+            return {
+                data: [],
+                loaded: true
+            };
+        default:
+            return state;
+    }
+};
+
+
 const app = combineReducers({
     todos,
     config,
     loading,
     auth,
-    menu
+    menu,
+    notifications
 });
 
 export default app;

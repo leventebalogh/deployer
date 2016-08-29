@@ -17,7 +17,7 @@ module.exports = class MongoDatabase {
         }
     }
 
-    model(name, schema) {
-        return this.connection.model(name, schema);
+    model(name, schema, collection) {
+        return this.connection.model(name, schema, collection);
     }
 };

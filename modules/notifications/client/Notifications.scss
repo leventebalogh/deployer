@@ -1,0 +1,48 @@
+$notification-width: 300px;
+$notification-height: 50px;
+
+.notification-list {
+    width: $notification-width;
+    max-width: 100%;
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.notification-general,
+.notification-error,
+.notification-success {
+    z-index: 9999;
+    height: $notification-height;
+    width: $notification-width;
+    max-width: 100%;
+    float: right;
+    white-space: nowrap;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    color: $white;
+}
+
+.notification-bar:last-child {
+        margin-bottom: 0;
+}
+
+.notification-general {
+    background: $dark-gray;
+}
+
+.notification-error {
+    background: $red;
+}
+
+.notification-success {
+    background: $green;
+}

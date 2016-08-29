@@ -9,7 +9,8 @@ export default function dateElement(element) {
             <label htmlFor={element.name}>{element.label}</label>
             <input
                 type="date"
-                value={element.value}
+                className={element.classes}
+                defaultValue={element.value}
                 name={element.name}
                 id={element.name}
                 required={element.required}

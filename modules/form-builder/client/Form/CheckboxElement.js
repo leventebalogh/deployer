@@ -8,7 +8,8 @@ export default function checkboxElement(element) {
         <div className="form-element" key={element.name}>
             <input
                 type="checkbox"
-                value={element.value}
+                className={element.classes}
+                defaultValue={element.value}
                 name={element.name}
                 id={element.name}
                 required={element.required}

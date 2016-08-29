@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const registry = require('core/server/registry');
 
 module.exports = class PromiseHub {
@@ -24,9 +25,23 @@ module.exports = class PromiseHub {
 
         return promise
             .then((value) => {
-                const obj = {};
-                obj[options.stateProperty] = value;
-                return obj;
+                // Set loaded property on the state objects
+                if (options.loaded) {
+                    value.loaded = true;
+                }
+
+                // Extend value with a pre-defined object
+                if (options.extend) {
+                    value = _.assign(value, options.extend);
+                }
+
+                // Wrap value in an object, required for setting up the Redux state
+                if (options.stateProperty) {
+                    value = _.set({}, options.stateProperty, value);
+                }
+
+
+                return value;
             });
     }
 
