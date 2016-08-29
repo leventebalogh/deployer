@@ -10,3 +10,6 @@ assets/exposed
 
 # Temporary files
 tmp
+
+# Other
+dump*
