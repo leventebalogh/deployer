@@ -1,0 +1,56 @@
+.projects {
+    margin: 20px 0;
+}
+
+.project {
+    border-bottom: 1px solid $gray-light;
+    padding: 10px 0;
+    min-height: 50px;
+    position: relative;
+}
+
+.project-name {
+    display: inline-block;
+    max-width: 80%;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.project-live {
+    font-size: 12px;
+    margin-right: 9px;
+    color: $green;
+}
+
+.project-actions {
+    margin-top: 8px;
+    float: right;
+
+    .pure-button {
+        margin-left: 20px;
+    }
+}
+
+.project-info {
+    color: $gray;
+    position: absolute;
+    font-size: 13px;
+    left: 20px;
+}
+
+$button-size: 25px;
+.circular-button {
+    border-radius: 99px;
+    background-color: $gray-light;
+    color: #505050;
+    border: 0;
+    box-shadow: none;
+    width: $button-size;
+    height: $button-size;
+    line-height: ($button-size - 1px);
+    font-size: 16px;
+    margin-right: 9px;
+    margin-top: 0px;
+    position: relative;
+    top: 2px;
+}
