@@ -11,7 +11,7 @@ module.exports = {
             'config',
             'layouts',
             'ionicons',
-            'deployer'
+            'deployer',
             'notifications'
         ],
         port: 8080,
@@ -32,12 +32,13 @@ module.exports = {
                 link: '/'
             },
             items: [
-                { name: 'Login', title: 'Login into our system', link: '/login' }
+                { icon: 'ion-log-in', name: 'Login', title: 'Login into our system', link: '/login' }
             ],
             itemsLoggedIn: [
-                { name: 'Projects', title: 'Show my projects', link: '/projects' },
-                { name: 'Help', title: 'Get more info', link: '/help' },
-                { name: 'Log out', title: 'Log out of the system', link: '/rest/logout' }
+                { icon: 'ion-filing', name: 'Projects', title: 'Show my projects', link: '/projects' },
+                { icon: 'ion-plus', name: 'Add Project', title: 'Add a new project', link: '/projects/add' },
+                { icon: 'ion-help', name: 'Help', title: 'Get more info', link: '/help' },
+                { icon: 'ion-log-out', name: 'Log out', title: 'Log out of the system', link: '/rest/logout', pureLink: true }
             ]
         }
     },
