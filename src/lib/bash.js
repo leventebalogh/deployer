@@ -4,7 +4,6 @@ const chalk = require("chalk");
 
 module.exports = {
     command,
-    log: logInfo,
     logInfo,
     logError,
     exit

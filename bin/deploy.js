@@ -5,6 +5,7 @@ const argv = require("yargs").argv;
 const config = require("../config");
 const bash = require("@lib/bash");
 const git = require("@lib/git");
+const deployer = require("@lib/deployer");
 
 const [repoName, branchName] = argv._;
 const { gitBaseUrl, targetFolder } = config;
@@ -17,4 +18,6 @@ if (!repoName || !branchName) {
 
 const gitUrl = git.getGitUrl(repoName, gitBaseUrl);
 
-git.clone(gitUrl, branchName, targetFolder);
+git.clone(gitUrl, branchName, targetFolder).then(
+    deployer.assertDeployerConfigExists
+);

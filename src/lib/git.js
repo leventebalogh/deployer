@@ -24,7 +24,7 @@ function clone(gitUrl, branchName, targetFolder) {
 
     return bash
         .command(`git clone -b ${branchName} ${gitUrl} ${targetFolder}`)
-        .then(() => bash.log("Successfully cloned repo."))
+        .then(() => logInfo("Successfully cloned repo."))
         .catch(err =>
             logError(
                 "Error while cloning the repo",
