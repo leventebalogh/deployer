@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@root/*": ["./*"],
+            "@bin/*": ["./bin/*"],
+            "@src/*": ["./src/*"],
+            "@lib/*": ["./src/lib/*"],
+            "@config/*": ["./config.js"]
+        }
+    },
+    "exclude": ["node_modules", "dist", "build"]
+}

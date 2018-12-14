@@ -1,0 +1,22 @@
+- name: Copy backend files
+  synchronize:
+    src: ../../../../../
+    dest: ~/sites/cash.leventebalogh.com/server/
+    rsync_opts:
+      - "--exclude=node_modules"
+
+- name: Build docker image
+  command: docker build -t budgeter-server ~/sites/cash.leventebalogh.com/server
+
+- name: Run docker image
+  docker_container:
+    name: budgeter-server
+    state: started
+    restart: yes
+    image: "budgeter-server"
+    purge_networks: yes
+    networks:
+      - name: nginx
+      - name: db
+    env:
+        ENV: production

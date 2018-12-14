@@ -1,0 +1,27 @@
+{
+    "name": "deployer",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bluebird": "^3.5.3",
+        "chalk": "^2.4.1",
+        "module-alias": "^2.1.0",
+        "rimraf": "^2.6.2",
+        "yargs": "^8.0.2"
+    },
+    "_moduleAliases": {
+        "@root": ".",
+        "@bin": "./bin",
+        "@config": "./config",
+        "@src": "./src",
+        "@lib": "./src/lib"
+    },
+    "devDependencies": {},
+    "description": ""
+}

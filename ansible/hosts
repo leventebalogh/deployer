@@ -1,0 +1,2 @@
+[docker-hosts]
+163.172.178.89 ansible_user=www
