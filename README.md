@@ -14,7 +14,7 @@ $ ./bin/deploy.js "leventebalogh/dockerised-express" "master"
 
 ### Overview
 ```
-    $> ./bin/deploy <repo-name> <branch-name>
+    $> ./bin/deploy "<repo-name>" "<branch-name>"
                      |
                      v
           +----------------------+   Not found
