@@ -45,3 +45,8 @@ $ ./bin/deploy.js "leventebalogh/dockerised-express" "master"
 ```bash
 $ ./bin/deploy.js "<repo-name>" "<branch-name>"
 ```
+
+## Todo
+- [ ] make configuration easy to edit
+- [ ] make target hosts configurable
+- [ ] publish to NPM
