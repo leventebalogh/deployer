@@ -1,41 +1,30 @@
-const fs = require("fs");
-const rimraf = require("rimraf");
-const bash = require("./bash");
+const bash = require('./bash')
 
 module.exports = {
-    getGitUrl,
-    clone,
-    clean
-};
-
-function getGitUrl(repoName, gitBaseUrl) {
-    if (repoName.includes("://") || repoName.includes("@")) {
-        return repoName;
-    }
-
-    return `${gitBaseUrl}/${repoName}`;
+  getGitUrl,
+  clone
 }
 
-function clone(gitUrl, branchName, targetFolder) {
-    const { logInfo, logError } = bash;
+function getGitUrl (repoName, gitBaseUrl) {
+  if (repoName.includes('://') || repoName.includes('@')) {
+    return repoName
+  }
 
-    clean(targetFolder);
-    logInfo(`Start cloning ${gitUrl}`);
-
-    return bash
-        .command(`git clone -b ${branchName} ${gitUrl} ${targetFolder}`)
-        .then(() => logInfo("Successfully cloned repo."))
-        .catch(err =>
-            logError(
-                "Error while cloning the repo",
-                { gitUrl, targetFolder },
-                err
-            )
-        );
+  return `${gitBaseUrl}/${repoName}`
 }
 
-function clean(targetFolder) {
-    if (fs.existsSync(targetFolder)) {
-        rimraf.sync(targetFolder);
-    }
+function clone (gitUrl, branchName, checkoutFolder) {
+  bash.logInfo(`Start cloning ${gitUrl}`)
+  bash.removeFolder(checkoutFolder)
+
+  return bash
+    .command(`git clone -b ${branchName} ${gitUrl} ${checkoutFolder}`)
+    .then(() => bash.logSuccess('✔ Cloned repo.'))
+    .catch(err =>
+      bash.logError(
+        'Error while cloning the repo',
+        { gitUrl, checkoutFolder },
+        err
+      )
+    )
 }
