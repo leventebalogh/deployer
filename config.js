@@ -1,6 +1,17 @@
-const path = require("path");
+const path = require('path')
+
+const gitBaseUrl = 'git@github.com:leventebalogh'
+const checkoutFolderName = '__deployer__'
 
 module.exports = {
-    gitBaseUrl: "git@github.com:leventebalogh",
-    targetFolder: path.join(__dirname, "__repository__")
-};
+  gitBaseUrl,
+  checkoutFolderName,
+  checkoutFolder: path.join(__dirname, checkoutFolderName),
+  ansibleFolder: path.join(__dirname, 'ansible'),
+  deployConfigRequiredProperties: [
+    'strategy',
+    'servers',
+    'container',
+    'container.name'
+  ]
+}
