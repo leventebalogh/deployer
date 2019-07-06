@@ -7,14 +7,14 @@ A simple service using Ansible to easily deploy Docker containers by the repo-na
 $ ./bin/deploy.js "leventebalogh/dockerised-express" "master"
 ```
 
-## Table of Contents
+### Table of Contents
 - [Overview](./docs/overview.md)
 - [Deploy Config](./docs/deploy-config.md)
 - [Deploy a Docker Service](./docs/deploy-a-docker-service.md)
 
-## Quick Overview
+### Overview
 ```
-    $> deploy <repo-name> <branch-name>
+    $> ./bin/deploy <repo-name> <branch-name>
                      |
                      v
           +----------------------+   Not found
@@ -24,29 +24,29 @@ $ ./bin/deploy.js "leventebalogh/dockerised-express" "master"
                      |
           +----------v-----------+   No file
           | Check if deploy.yml  +-------------->  ERROR
-          | exists               |
+          | exists in project    |
           +----------+-----------+
                      |
           +----------v-----------+
-          | Read information     |
+          | Read configuration   |
           | from deploy.yml      |
           +----------+-----------+
                      |
     Docker           |
     +----------------v-----------------+
-    | 1. checkout repo to target host  |
-    | 2. build docker image            |
-    | 3. restart container from image  |
+    | 1. Checkout repo to target host  |
+    | 2. Build docker image            |
+    | 3. Restart container from image  |
     +----------------------------------+
 ```
 
 
-## Usage
+### Usage
 ```bash
 $ ./bin/deploy.js "<repo-name>" "<branch-name>"
 ```
 
-## Todo
+### Todo
 - [ ] make configuration easy to edit
 - [ ] make target hosts configurable
 - [ ] publish to NPM
