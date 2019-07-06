@@ -1,0 +1,11 @@
+---
+- name: Load Deploy Configuration Variables
+  include_vars: "{{deployConfigPath}}"
+
+- include_tasks: deploy-docker-to-host.yml
+  delegate_to: "{{server}}"
+  remote_user: www
+  with_items:
+  - "{{ servers }}"
+  loop_control:
+    loop_var: server

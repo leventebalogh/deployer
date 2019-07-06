@@ -1,0 +1,31 @@
+---
+- name: Load Deploy Configuration Variables
+  include_vars: "{{deployConfigPath}}"
+
+- name: Checkout repository
+  git:
+    repo: "{{gitUrl}}"
+    version: "{{branchName}}"
+    dest: "~/{{checkoutFolderName}}"
+    key_file: ~/.ssh/github-{{repoName}}
+
+- name: Build Docker Image
+  docker_image:
+     path: "~/{{checkoutFolderName}}"
+     name: "{{container.name}}"
+
+- name: Run Docker Container
+  docker_container:
+    name: "{{container.name}}"
+    image: "{{container.name}}"
+    ports: "{{container.ports | default([])}}"
+    exposed_ports: "{{container.exposed_ports | default([])}}"
+    networks: "{{container.networks | default([])}}"
+    purge_networks: yes
+    state: started
+    restart: yes
+
+- name: Delete temporary checkout directory
+  file:
+    state: absent
+    path: "~/{{checkoutFolderName}}"
