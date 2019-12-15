@@ -1,0 +1,20 @@
+# This file should be located at ~/.deployer.yml
+
+# The github username that you would like to use to resolve repository names by default.
+githubUsername: leventebalogh,
+
+# The name of the folder to check out temporary code into 
+checkoutFolderName: '__deployer__',
+
+# Set it TRUE to use SSH to connect to Github
+githubUseSSH: true
+
+# (Optional)
+# Specify a private SSH key to use for authentication
+# Defaults to "~/.ssh/id_rsa"
+keyFile: /Users/levente.balogh/.ssh/personal_rsa
+
+# (Optional)
+# Specify the user to use for the SSH authentication
+# Defaults to "www"
+user: /Users/levente.balogh/.ssh/personal_rsa
