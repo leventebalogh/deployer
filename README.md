@@ -40,7 +40,7 @@ Examples:
 You can log out all the configuration parameters by using the `--verbose` flag.
 
 ## User configuration
-The user configuration should be located at `~/.deployer.yml`:
+The user configuration should be located in your home directory as `~/.deployer.yml`:
 ```yaml
 # The github username that you would like to use to resolve repository names by default.
 githubUsername: leventebalogh,
@@ -63,7 +63,7 @@ user: foo
 ```
 
 ## Repository configuration
-The repository configuration should be located at the root of of your repository.
+The repository configuration should be located at the root of of your repository. <br>
 The name of the file should be `.deployer.yml`.
 
 ```yaml
