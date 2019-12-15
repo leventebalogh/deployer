@@ -4,19 +4,20 @@ require('module-alias/register')
 const bash = require('@lib/bash')
 const git = require('@lib/git')
 const { getConfig, getRepositoryConfig } = require('@lib/config')
-const { checkCliArgs } = require('@lib/cli')
 const { deploy } = require('@lib/deployer')
 const assertions = require('@lib/assertions')
 const logger = require('@lib/logger')
 
 const config = getConfig()
-const { repository, repositoryUrl, branch, checkoutFolder } = config
+const { repository, repositoryUrl, branch, checkoutFolder, verbose } = config
 
-checkCliArgs()
+// Only displaying configuration values if it is asked for explicitly (verbose mode)
+if (verbose) {
+  logger.logTitle('Configuration:')
+  logger.logVariables(config)
+  logger.logSeparator()
+}
 
-logger.logTitle('Configuration:')
-logger.logVariables(config)
-logger.logSeparator()
 logger.success('Starting deployment...')
 
 git

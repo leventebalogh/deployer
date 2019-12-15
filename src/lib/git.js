@@ -1,7 +1,7 @@
 require('module-alias/register')
 
-const bash = require('./bash')
-const logger = require('./logger')
+const bash = require('@lib/bash')
+const logger = require('@lib/logger')
 
 module.exports = {
   getRepositoryUrl,

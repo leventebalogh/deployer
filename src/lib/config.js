@@ -5,7 +5,7 @@ const path = require('path')
 const os = require('os')
 const yaml = require('js-yaml')
 const git = require('./git')
-const { getPositionalCliArgs } = require('./cli')
+const { getCliArgs } = require('./cli')
 const defaultConfig = require('../../default.config')
 
 const CONFIG_FILENAME = '.deployer.yml'
@@ -28,7 +28,7 @@ module.exports = {
 // with the user's configuration coming from ~/.deployer.yml
 // The user's configuration will override the default one in all cases.
 function getConfig () {
-  const { repository, branch } = getPositionalCliArgs()
+  const { repository, branch, verbose } = getCliArgs()
   const userConfig = getUserConfig()
   const repositoryUrl = git.getRepositoryUrl(repository, userConfig.githubUsername, userConfig.useSSH)
 
@@ -36,6 +36,7 @@ function getConfig () {
     repository,
     repositoryUrl,
     branch,
+    verbose,
     ...defaultConfig,
     ...userConfig
   }

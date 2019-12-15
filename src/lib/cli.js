@@ -1,41 +1,34 @@
 require('module-alias/register')
 
-const argv = require('yargs').argv
-const chalk = require('chalk')
-const logger = require('@lib/logger')
+const yargs = require('yargs')
+
+// Setting up the command
+const argv = yargs
+  .option('repository', {
+    alias: 'r',
+    describe: 'Name of your repository on Github. (e.g. "react")'
+  })
+  .option('branch', {
+    alias: 'b',
+    describe: 'Name of the branch you would like to deploy. (e.g. "master")'
+  })
+  .option('verbose', {
+    alias: 'v',
+    describe: 'Use to display more detailed logging'
+  })
+  .demandOption(['repository', 'branch'], 'Please provide both repository and branch arguments.')
+  .example('deployer --repository my-project --branch master', 'Deploys the master branch from "my-project" to the target servers.')
+  .help()
+  .argv
 
 module.exports = {
-  checkCliArgs,
-  getPositionalCliArgs
+  getCliArgs
 }
 
-function getPositionalCliArgs () {
-  const [repository, branch] = argv._
-
-  return { repository, branch }
-}
-
-function checkCliArgs () {
-  const { repository, branch } = getPositionalCliArgs()
-
-  if (!repository && !branch) {
-    logger.error({
-      title: 'Missing parameters',
-      description: chalk`Correct syntax: $ deploy {bold <repo-name> <branch-name>}`
-    })
-  }
-
-  if (repository && !branch) {
-    logger.error({
-      title: 'Please specify the branch',
-      description: chalk`Correct syntax: $ deploy ${repository} {bold <branch-name>}`
-    })
-  }
-
-  if (!repository && branch) {
-    logger.error({
-      title: 'Please specify the repository',
-      description: chalk`Correct syntax: $ deploy {bold <repo-name>} ${branch}`
-    })
+function getCliArgs () {
+  return {
+    repository: argv.repository,
+    branch: argv.branch,
+    verbose: argv.verbose
   }
 }

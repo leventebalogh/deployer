@@ -11,7 +11,7 @@ module.exports = {
 function runPlaybook () {
   const config = getConfig()
   const repositoryConfig = getRepositoryConfig()
-  const playbookVars = { ...config, ...repositoryConfig };
+  const playbookVars = { ...config, ...repositoryConfig }
   const playbook = path.join(config.ansibleFolder, `deploy.docker.yml`)
   const optHosts = `-i "${getCommaSeparatedHostList()},"`
   const optKeyFile = config.keyFile ? `--key-file ${config.keyFile}` : `--key-file ~/.ssh/id_rsa`
@@ -20,10 +20,13 @@ function runPlaybook () {
   const optSSH = `--ssh-common-args "-o ForwardAgent=yes"`
   const command = `ansible-playbook ${playbook} ${optHosts} ${optKeyFile} ${optUser} ${optSSH} ${optExtraVars}`
 
-  logger.logSeparator()
-  logger.logTitle('Running ANSIBLE command')
-  logger.info(command)
-  logger.logSeparator()
+  // Only displaying ANSIBLE command if it is asked for explicitly (verbose mode)
+  if (config.verbose) {
+    logger.logSeparator()
+    logger.logTitle('Running ANSIBLE command')
+    logger.info(command)
+    logger.logSeparator()
+  }
 
   return bash.command(command, { showLogs: true })
 }
