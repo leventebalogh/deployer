@@ -1,18 +1,18 @@
-# Deployer (Beta)
+# Deployer
 
-A simple service using Ansible to easily deploy Docker containers by the repo-name and branch name.
+A simple service for deploying docker containers easily.
 
-**Example:**
+## Install
 ```bash
-$ ./bin/deploy.js "leventebalogh/dockerised-express" "master"
+$ npm i -g @devcrush/deployer
 ```
 
-### Table of Contents
-- [Overview](./docs/overview.md)
-- [Deploy Config](./docs/deploy-config.md)
-- [Deploy a Docker Service](./docs/deploy-a-docker-service.md)
+## Usage
+```bash
+$ deployer "<github-repository>" "<branch>"
+```
 
-### Overview
+## Overview
 ```
     $> ./bin/deploy "<repo-name>" "<branch-name>"
                      |
@@ -39,14 +39,3 @@ $ ./bin/deploy.js "leventebalogh/dockerised-express" "master"
     | 3. Restart container from image  |
     +----------------------------------+
 ```
-
-
-### Usage
-```bash
-$ ./bin/deploy.js "<repo-name>" "<branch-name>"
-```
-
-### Todo
-- [ ] make configuration easy to edit
-- [ ] make target hosts configurable
-- [ ] publish to NPM
