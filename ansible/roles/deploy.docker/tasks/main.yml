@@ -1,11 +1,27 @@
 ---
-- name: Load Deploy Configuration Variables
-  include_vars: "{{deployConfigPath}}"
+- name: Checkout repository
+  git:
+    repo: "{{repositoryUrl}}"
+    version: "{{branch}}"
+    dest: "~/{{checkoutFolderName}}"
 
-- include_tasks: deploy-docker-to-host.yml
-  delegate_to: "{{server}}"
-  remote_user: www
-  with_items:
-  - "{{ servers }}"
-  loop_control:
-    loop_var: server
+- name: Build Docker Image
+  docker_image:
+     path: "~/{{checkoutFolderName}}"
+     name: "{{containerName}}"
+
+- name: Run Docker Container
+  docker_container:
+    name: "{{containerName}}"
+    image: "{{containerName}}"
+    ports: "{{ports | default([])}}"
+    exposed_ports: "{{exposedPorts | default([])}}"
+    networks: "{{networks | default([])}}"
+    purge_networks: yes
+    state: started
+    restart: yes
+
+- name: Delete temporary checkout directory
+  file:
+    state: absent
+    path: "~/{{checkoutFolderName}}"
