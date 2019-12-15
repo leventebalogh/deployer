@@ -37,6 +37,7 @@ Examples:
 ```
 
 ## Verbose mode
+You can log out all the configuration parameters by using the `--verbose` flag.
 
 ## User configuration
 
