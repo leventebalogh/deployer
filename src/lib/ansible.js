@@ -1,47 +1,35 @@
 const _ = require('lodash')
-const fs = require('fs')
 const path = require('path')
 const bash = require('@lib/bash')
-const config = require('@config')
+const logger = require('@lib/logger')
+const { getConfig, getRepositoryConfig } = require('@lib/config')
 
 module.exports = {
   runPlaybook
 }
 
-function runPlaybook (strategy, vars) {
-  const playbookPath = getPlaybookPath(strategy)
-  const hostsPath = getHostsPath()
-  const command = `ansible-playbook -i ${hostsPath} ${playbookPath} ${printExtraVars(vars)}`
+function runPlaybook () {
+  const config = getConfig()
+  const repositoryConfig = getRepositoryConfig()
+  const playbookVars = { ...config, ...repositoryConfig };
+  const playbook = path.join(config.ansibleFolder, `deploy.docker.yml`)
+  const optHosts = `-i "${getCommaSeparatedHostList()},"`
+  const optKeyFile = config.keyFile ? `--key-file ${config.keyFile}` : `--key-file ~/.ssh/id_rsa`
+  const optUser = config.user ? `--user ${config.user}` : `--user www`
+  const optExtraVars = `--extra-vars '${JSON.stringify(playbookVars)}'`
+  const optSSH = `--ssh-common-args "-o ForwardAgent=yes"`
+  const command = `ansible-playbook ${playbook} ${optHosts} ${optKeyFile} ${optUser} ${optSSH} ${optExtraVars}`
 
-  if (!fs.existsSync(playbookPath)) {
-    bash.logError(`No playbook found for the strategy "${strategy}".`)
-    bash.logError(`Check the deploy.yml in your repo.`)
-    bash.exit()
-  }
+  logger.logSeparator()
+  logger.logTitle('Running ANSIBLE command')
+  logger.info(command)
+  logger.logSeparator()
 
-  bash.logInfo(`Running command "${command}"`)
-
-  return bash.command(command)
+  return bash.command(command, { showLogs: true })
 }
 
-function getPlaybookPath (strategy) {
-  return path.join(config.ansibleFolder, `deploy.${strategy}.yml`)
-}
+function getCommaSeparatedHostList () {
+  const { targetHosts } = getRepositoryConfig()
 
-function getHostsPath () {
-  return path.join(config.ansibleFolder, 'hosts.default')
-}
-
-function printExtraVars (vars) {
-  if (_.isEmpty(vars)) {
-    return ''
-  }
-
-  const varsString = _.reduce(
-    vars,
-    (result, value, key) => `${result} ${key}=${value}`,
-    ''
-  )
-
-  return `--extra-vars "${varsString}"`
+  return targetHosts.join(', ')
 }

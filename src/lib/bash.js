@@ -13,7 +13,7 @@ module.exports = {
   removeFolder
 }
 
-function command (command) {
+function command (command, { showLogs = false, showErrors = false } = {}) {
   return new Promise((resolve, reject) => {
     const p = exec(command, (err, stdout) => {
       if (err) {
@@ -23,8 +23,13 @@ function command (command) {
       }
     })
 
-    p.stdout.pipe(process.stdout)
-    p.stderr.pipe(process.stderr)
+    if (showLogs) {
+      p.stdout.pipe(process.stdout)
+    }
+
+    if (showErrors) {
+      p.stderr.pipe(process.stderr)
+    }
   })
 }
 

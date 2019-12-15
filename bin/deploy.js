@@ -1,27 +1,33 @@
 #! /usr/bin/env node
 require('module-alias/register')
 
-const argv = require('yargs').argv
-const config = require('../config')
 const bash = require('@lib/bash')
 const git = require('@lib/git')
-const deployer = require('@lib/deployer')
+const { getConfig, getRepositoryConfig } = require('@lib/config')
+const { checkCliArgs } = require('@lib/cli')
+const { deploy } = require('@lib/deployer')
+const assertions = require('@lib/assertions')
+const logger = require('@lib/logger')
 
-const [repoName, branchName] = argv._
-const { gitBaseUrl, checkoutFolderName, checkoutFolder } = config
+const config = getConfig()
+const { repository, repositoryUrl, branch, checkoutFolder } = config
 
-if (!repoName || !branchName) {
-  bash.logError('Missing parameter.')
-  bash.logError('Correct syntax: $ deploy <repo-name> <branch-name>')
-  bash.exit()
-}
+checkCliArgs()
 
-const gitUrl = git.getGitUrl(repoName, gitBaseUrl)
+logger.logTitle('Configuration:')
+logger.logVariables(config)
+logger.logSeparator()
+logger.success('Starting deployment...')
 
 git
-  .clone(gitUrl, branchName, checkoutFolder)
-  .then(deployer.assertDeployerConfigExists)
-  .then(deployer.assertDeployerConfigIsValid)
-  .then(() => deployer.deploy({ gitUrl, repoName, branchName, checkoutFolderName }))
+  .clone(repositoryUrl, branch, checkoutFolder)
+  .then(assertions.assertRepositoryConfigExists)
+  .then(assertions.assertRepositoryConfigIsValid)
+  .then(deploy)
+  .then(() => {
+    const { targetHosts, containerName } = getRepositoryConfig()
+    logger.success(`"${repository}" deployed successfully`)
+    logger.info(`Affected hosts: ${targetHosts.join(', ')}`)
+    logger.info(`Container name: ${containerName}`)
+  })
   .then(() => bash.removeFolder(checkoutFolder))
-  .then(() => bash.logSuccess(`✔ "${repoName}" deployed successfully`))
