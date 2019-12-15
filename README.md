@@ -4,10 +4,16 @@ A simple service for deploying docker containers easily.
 
 ![](assets/screen-recording.gif)
 
+
 ## Install
 ```bash
 $ npm i -g @devcrush/deployer
 ```
+
+**Other dependencies**:
+- Ansible (client) - [Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+- Docker (server) - [Installation Guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+
 
 ## Usage
 ```bash
@@ -25,7 +31,13 @@ Examples:
   --branch master                           "my-project" to the target servers.
 ```
 
-## Overview
+## Verbose mode
+
+## User configuration
+
+## Repository configuration
+
+## How does it work?
 ```
     $> ./bin/deploy "<repo-name>" "<branch-name>"
                      |
