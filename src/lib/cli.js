@@ -17,7 +17,7 @@ const argv = yargs
     describe: 'Use to display more detailed logging'
   })
   .demandOption(['repository', 'branch'], 'Please provide both repository and branch arguments.')
-  .example('deployer --repository my-project --branch master', 'Deploys the master branch from "my-project" to the target servers.')
+  .example('deployer -r my-project -b master', 'Deploys the master branch from "my-project" to the target servers. "my-project" will be transformed to "git@github.com:<username>/my-project" under the hood, but in order to make it work you have to create a ~/.deployer.yml config file. The --repository option also accepts an absolute URL.')
   .help()
   .argv
 
