@@ -1,7 +1,7 @@
 {
-    "name": "deployer",
+    "name": "@devcrush/deployer",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "bin/deploy.js",
     "scripts": {
         "lint": "eslint .",
         "lint-fix": "eslint . --fix"
@@ -11,7 +11,7 @@
     "license": "ISC",
     "dependencies": {
         "bluebird": "^3.5.3",
-        "chalk": "^2.4.1",
+        "chalk": "^3.0.0",
         "eslint": "^5.10.0",
         "eslint-config-standard": "^12.0.0",
         "eslint-plugin-import": "^2.14.0",
