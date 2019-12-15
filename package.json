@@ -2,6 +2,9 @@
     "name": "@devcrush/deployer",
     "version": "1.0.1",
     "main": "bin/deploy.js",
+    "bin": {
+        "deployer": "./bin/deploy.js"
+    },
     "scripts": {
         "lint": "eslint .",
         "lint-fix": "eslint . --fix"
