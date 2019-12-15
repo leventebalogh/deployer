@@ -2,6 +2,8 @@
 
 A simple service for deploying docker containers easily.
 
+![](assets/screen-recording.gif)
+
 ## Install
 ```bash
 $ npm i -g @devcrush/deployer
