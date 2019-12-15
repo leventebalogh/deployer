@@ -1,23 +1,17 @@
 {
     "name": "@devcrush/deployer",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "bin/deploy.js",
     "scripts": {
         "lint": "eslint .",
         "lint-fix": "eslint . --fix"
     },
-    "keywords": [],
+    "keywords": ["docker", "deploy", "ansible"],
     "author": "",
     "license": "ISC",
     "dependencies": {
         "bluebird": "^3.7.2",
         "chalk": "^3.0.0",
-        "eslint": "^6.7.2",
-        "eslint-config-standard": "^14.1.0",
-        "eslint-plugin-import": "^2.19.1",
-        "eslint-plugin-node": "^10.0.0",
-        "eslint-plugin-promise": "^4.2.1",
-        "eslint-plugin-standard": "^4.0.1",
         "lodash": "^4.17.15",
         "module-alias": "^2.2.2",
         "rimraf": "^3.0.0",
@@ -31,7 +25,13 @@
         "@lib": "./src/lib"
     },
     "devDependencies": {
+        "eslint-config-standard": "^14.1.0",
+        "eslint-plugin-import": "^2.19.1",
+        "eslint-plugin-node": "^10.0.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "eslint": "^6.7.2",
         "js-yaml": "^3.13.1"
     },
-    "description": ""
+    "description": "A simple service for deploying Node.js docker containers easily."
 }
