@@ -11,7 +11,18 @@ $ npm i -g @devcrush/deployer
 
 ## Usage
 ```bash
-$ deployer "<github-repository>" "<branch>"
+# You can always display the usage information by "$ deployer --help"
+Options:
+  --version         Show version number                                [boolean]
+  --repository, -r  Name of your repository on Github. (e.g. "react") [required]
+  --branch, -b      Name of the branch you would like to deploy. (e.g. "master")
+                                                                      [required]
+  --verbose, -v     Use to display more detailed logging
+  --help            Show help                                          [boolean]
+
+Examples:
+  deployer --repository my-project          Deploys the master branch from
+  --branch master                           "my-project" to the target servers.
 ```
 
 ## Overview
