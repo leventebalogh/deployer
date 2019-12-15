@@ -27,8 +27,13 @@ Options:
   --help            Show help                                          [boolean]
 
 Examples:
-  deployer --repository my-project          Deploys the master branch from
-  --branch master                           "my-project" to the target servers.
+  deployer -r my-project -b master  Deploys the master branch from "my-project"
+                                    to the target servers. "my-project" will be
+                                    transformed to "git@github.com:<username>/my-project"
+                                    under the hood, but in order to make it work you
+                                    have to create a ~/.deployer.yml config
+                                    file. The --repository option also accepts
+                                    an absolute URL.
 ```
 
 ## Verbose mode
