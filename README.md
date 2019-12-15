@@ -63,6 +63,34 @@ user: foo
 ```
 
 ## Repository configuration
+The repository configuration should be located at the root of of your repository.
+The name of the file should be `.deployer.yml`.
+
+```yaml
+# (Required)
+# The list of hosts where your project should be deployed to.
+targetHosts:
+    - worker-1.leventebalogh.com
+    - worker-2.leventebalogh.com
+
+# (Optional)
+# The name of the docker container that will be started from the image.
+# Deafults back to the name of the repository.
+containerName: foo
+
+# (Optional)
+# The list of networks which should be attached to the container.
+networks:
+    - nginx
+    - db
+
+# (Optional)
+# The list of ports you would like to expose from the container. 
+ports:
+    - 8080:8080
+    - 8081:8081
+
+```
 
 ## How does it work?
 ```
