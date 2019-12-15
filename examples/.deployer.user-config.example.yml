@@ -17,4 +17,4 @@ keyFile: /Users/levente.balogh/.ssh/personal_rsa
 # (Optional)
 # Specify the user to use for the SSH authentication
 # Defaults to "www"
-user: /Users/levente.balogh/.ssh/personal_rsa
+user: foo

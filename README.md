@@ -40,6 +40,27 @@ Examples:
 You can log out all the configuration parameters by using the `--verbose` flag.
 
 ## User configuration
+The user configuration should be located at `~/.deployer.yml`:
+```yaml
+# The github username that you would like to use to resolve repository names by default.
+githubUsername: leventebalogh,
+
+# The name of the folder to check out temporary code into 
+checkoutFolderName: '__deployer__',
+
+# Set it TRUE to use SSH to connect to Github
+githubUseSSH: true
+
+# (Optional)
+# Specify a private SSH key to use for authentication
+# Defaults to "~/.ssh/id_rsa"
+keyFile: /Users/levente.balogh/.ssh/personal_rsa
+
+# (Optional)
+# Specify the user to use for the SSH authentication
+# Defaults to "www"
+user: foo
+```
 
 ## Repository configuration
 
