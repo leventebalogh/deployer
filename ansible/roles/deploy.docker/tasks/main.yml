@@ -9,6 +9,8 @@
   docker_image:
      path: "~/{{checkoutFolderName}}"
      name: "{{containerName}}"
+     force: yes
+     state: present
 
 - name: Run Docker Container
   docker_container:
